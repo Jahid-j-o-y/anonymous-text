@@ -1,0 +1,101 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f5fbf7;
+  --foreground: #0f172a;
+}
+
+.dark {
+  --background: #071011;
+  --foreground: #f1f5f9;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Frosted glass utility classes (Light & Dark) */
+.frosted-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 30px -10px rgba(5, 150, 105, 0.08);
+}
+
+.dark .frosted-glass {
+  background: rgba(11, 23, 25, 0.75);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5);
+}
+
+.frosted-glass-hover {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.frosted-glass-hover:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(16, 185, 129, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px -10px rgba(16, 185, 129, 0.15);
+}
+
+.dark .frosted-glass-hover:hover {
+  background: rgba(16, 32, 34, 0.88);
+  border-color: rgba(16, 185, 129, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* Gradient cyan-green pill buttons */
+.btn-pill-gradient {
+  background: linear-gradient(135deg, #059669 0%, #0d9488 50%, #06b6d4 100%);
+  color: #ffffff;
+  font-weight: 600;
+  border-radius: 9999px;
+  box-shadow: 0 8px 20px -4px rgba(13, 148, 136, 0.35);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-pill-gradient:hover:not(:disabled) {
+  background: linear-gradient(135deg, #10b981 0%, #14b8a6 50%, #0891b2 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -4px rgba(16, 185, 129, 0.45);
+}
+
+.btn-pill-gradient:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-pill-gradient:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Accessible focus ring with cyan-green */
+*:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+/* Motion reduce support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
